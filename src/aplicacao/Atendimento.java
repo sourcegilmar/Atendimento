@@ -13,8 +13,7 @@ public class Atendimento {
 		public int cartao;
 		public String nome;
 		public String sobreNome;
-		double valor;
-		double bonus;
+		double valor;		
 		public Atende prox;
 	}
 
