@@ -40,7 +40,47 @@ public class Atendimento {
 				System.out.println("Opção Inválida!!");
 			}
 			if (op == 1) {
+				int numero = 0;
+				try {
+					numero = Integer.parseInt(JOptionPane.showInputDialog("NÚMERO DO CARTÃO: ", "0"));
+				} catch (NumberFormatException e) {
+					agenteDeErro(e);
+					continue;
+				}
+				aux = inicio;
+				boolean achou = false;
+				while (aux != null) {
+					if (aux.cartao == numero) {
+						achou = true;
+						JOptionPane.showMessageDialog(null, "Esse número do cartão já foi usado.\nFavor verificar!");
+						break;
+					}
+					aux = aux.prox;
+				}
+				if (achou == false) {
+					Atende novo = new Atende();
+					novo.cartao = numero;
 
+					try {
+						novo.nome = JOptionPane.showInputDialog("NOME: ", "");
+						novo.sobreNome = JOptionPane.showInputDialog("SOBRENOME: ", "");
+						novo.valor = Double.parseDouble(JOptionPane.showInputDialog("VALOR: ", "0"));
+					} catch (NumberFormatException e) {
+						agenteDeErro(e);
+						continue;
+					}
+
+					if (inicio == null) {
+						inicio = novo;
+						fim = novo;
+					} else {
+						fim.prox = novo;
+						fim = novo;
+					}
+					JOptionPane.showMessageDialog(null,
+							"O cartão número " + novo.cartao + ", foi inserido para atendimento: ",
+							"MENSAGEM DO PROGRAMA", JOptionPane.CLOSED_OPTION);
+				}
 			}
 			if (op == 2) {
 
@@ -76,7 +116,7 @@ public class Atendimento {
 
 			}
 		} while (op != 13);
-		System.out.println("Programa finalizado em: "+getDateTime());
+		System.out.println("Programa finalizado em: " + getDateTime());
 		JOptionPane.showMessageDialog(null, "PROGRAMA FINALIZADO!");
 	}
 
@@ -102,8 +142,8 @@ public class Atendimento {
 	}
 
 	public static String getDateTime() {
-    	DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-    	Date date = new Date();
-    	return dateFormat.format(date);
-    	}
+		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+		Date date = new Date();
+		return dateFormat.format(date);
+	}
 }
