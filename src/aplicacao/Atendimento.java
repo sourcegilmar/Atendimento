@@ -116,8 +116,11 @@ public class Atendimento {
 
 			}
 		} while (op != 13);
+		System.out.println("-------------------------------------------");
 		System.out.println("Programa finalizado em: " + getDateTime());
+		System.out.println("-------------------------------------------");
 		JOptionPane.showMessageDialog(null, "PROGRAMA FINALIZADO!");
+		
 	}
 
 	private static void agenteDeErro(NumberFormatException e) {
