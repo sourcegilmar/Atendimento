@@ -1,14 +1,12 @@
 package aplicacao;
 
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.Scanner;
-import java.util.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 
 public class Atendimento {
 	private static class Atende {
@@ -83,7 +81,22 @@ public class Atendimento {
 				}
 			}
 			if (op == 2) {
-
+				if (inicio == null) {
+					atendimentoVazio();
+				} else {
+					JTextArea saida = new JTextArea(6, 45); // HEIGHT X WIDTH
+					JScrollPane scroll = new JScrollPane(saida);
+					saida.append("CARTÃO\t" + "NOME\t" + "SOBRENOME\t" + "VALOR\n");
+					saida.append("-------------------------------------------------------------------------\n");
+					aux = inicio;
+					while (aux != null) {
+						saida.append(aux.cartao + "\t" + aux.nome + "\t" + aux.sobreNome + "\t" + aux.valor + "\n");
+						aux = aux.prox;
+					}
+					saida.append("\n");
+					JOptionPane.showMessageDialog(null, scroll, "CONSULTAR DADOS DO ATENDIMENTO",
+							JOptionPane.CLOSED_OPTION);
+				}
 			}
 			if (op == 3) {
 
@@ -120,7 +133,7 @@ public class Atendimento {
 		System.out.println("Programa finalizado em: " + getDateTime());
 		System.out.println("-------------------------------------------");
 		JOptionPane.showMessageDialog(null, "PROGRAMA FINALIZADO!");
-		
+
 	}
 
 	private static void agenteDeErro(NumberFormatException e) {
