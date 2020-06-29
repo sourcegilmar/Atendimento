@@ -12,6 +12,7 @@ public class Atendimento {
 		public String nome;
 		public String sobreNome;
 		double valor;
+		double taxaAtraso;
 		public Atende prox;
 	}
 	
