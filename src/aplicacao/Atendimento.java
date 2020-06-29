@@ -1,10 +1,15 @@
 package aplicacao;
+
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Scanner;
+import java.util.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 import javax.swing.JOptionPane;
+
 public class Atendimento {
 	private static class Atende {
 		public int cartao;
@@ -15,6 +20,7 @@ public class Atendimento {
 		double bonus;
 		public Atende prox;
 	}
+
 	public static void main(String[] args) {
 
 		Atende inicio = null;
@@ -69,31 +75,35 @@ public class Atendimento {
 			if (op == 12) {
 
 			}
-		} while (op !=13);
+		} while (op != 13);
+		System.out.println("Programa finalizado em: "+getDateTime());
 		JOptionPane.showMessageDialog(null, "PROGRAMA FINALIZADO!");
 	}
-    private static void agenteDeErro(NumberFormatException e) {
-        JOptionPane.showMessageDialog(null, "ERRO AO TENTAR CONVERTER UM VALOR\nFAVOR VERIRIFICAR\nMENSAGEM ORIGINAL: " + e.getMessage(), "AGENTE DE ERRO", JOptionPane.CLOSED_OPTION);
-    }
-    private static void atendimentoVazio() {
-        JOptionPane.showMessageDialog(null, "NÃO HÁ ATENDIMENTOS", "MENSAGEM DO PROGRAMA", JOptionPane.CLOSED_OPTION);
-    }
-    private static int mostrarMenu() {
-        String texto = "\nMENU DE OPÇÕES\n"
-                + "\n1  - Recepcionar cliente"
-                + "\n2  - Consultar clientes a serem atendidos"
-                + "\n3  - Atender cliente"
-                + "\n4  - Liberar todos os clientes"
-                + "\n5  - Verificar quantidade de clientes a atender"
-                + "\n6  - Localizar cliente por número"
-                + "\n7  - Localizar cliente por nome"
-                + "\n8  - Emitir relatório de clientes"
-                + "\n9  - Ver relatório de clientes"
-                + "\n10 - Filtrar clientes por valor"
-                + "\n11 - Ver endereços hash"
-                + "\n12 - Sobre"
-                + "\n13 - Sair\n";
-        int opcao = Integer.parseInt(JOptionPane.showInputDialog(texto, "1"));
-        return opcao;
-    }
+
+	private static void agenteDeErro(NumberFormatException e) {
+		JOptionPane.showMessageDialog(null,
+				"ERRO AO TENTAR CONVERTER UM VALOR\nFAVOR VERIRIFICAR\nMENSAGEM ORIGINAL: " + e.getMessage(),
+				"AGENTE DE ERRO", JOptionPane.CLOSED_OPTION);
+	}
+
+	private static void atendimentoVazio() {
+		JOptionPane.showMessageDialog(null, "NÃO HÁ ATENDIMENTOS", "MENSAGEM DO PROGRAMA", JOptionPane.CLOSED_OPTION);
+	}
+
+	private static int mostrarMenu() {
+		String texto = "\nMENU DE OPÇÕES\n" + "\n1  - Recepcionar cliente"
+				+ "\n2  - Consultar clientes a serem atendidos" + "\n3  - Atender cliente"
+				+ "\n4  - Liberar todos os clientes" + "\n5  - Verificar quantidade de clientes a atender"
+				+ "\n6  - Localizar cliente por número" + "\n7  - Localizar cliente por nome"
+				+ "\n8  - Emitir relatório de clientes" + "\n9  - Ver relatório de clientes"
+				+ "\n10 - Filtrar clientes por valor" + "\n11 - Ver endereços hash" + "\n12 - Sobre" + "\n13 - Sair\n";
+		int opcao = Integer.parseInt(JOptionPane.showInputDialog(texto, "1"));
+		return opcao;
+	}
+
+	public static String getDateTime() {
+    	DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+    	Date date = new Date();
+    	return dateFormat.format(date);
+    	}
 }
