@@ -97,7 +97,14 @@ public class Atendimento {
 				}
 			}
 			if (op == 3) {
-
+				if (inicio == null ) {					 
+					atendimentoVazio();
+				}
+				else {
+					JOptionPane.showMessageDialog(null, "CARTÃO:  "+inicio.cartao+", NOME: "+inicio.nome+" foi atendido(a)!",
+							"MENSAGEM DO PROGRAMA", JOptionPane.CLOSED_OPTION);					
+					inicio = inicio.prox;
+				}
 			}
 			if (op == 4) {
 
