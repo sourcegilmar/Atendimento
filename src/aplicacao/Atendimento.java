@@ -107,7 +107,15 @@ public class Atendimento {
 				}
 			}
 			if (op == 4) {
-
+				if (inicio == null ) {
+					atendimentoVazio();
+				}
+				else
+				{	
+					inicio = null;
+					JOptionPane.showMessageDialog(null, " * * O ATENDIMENTO FOI LIBERADO * *",
+							"MENSAGEM DO PROGRAMA", JOptionPane.CLOSED_OPTION);
+				}
 			}
 			if (op == 5) {
 
