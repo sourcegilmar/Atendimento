@@ -16,7 +16,7 @@ public class Atendimento {
 		public int cartao;
 		public String nome;
 		public String sobreNome;
-		double valor;		
+		double valor;
 		public Atende prox;
 	}
 
@@ -100,141 +100,163 @@ public class Atendimento {
 				}
 			}
 			if (op == 3) {
-				if (inicio == null ) {					 
+				if (inicio == null) {
 					atendimentoVazio();
-				}
-				else {
-					JOptionPane.showMessageDialog(null, "CARTÃO:  "+inicio.cartao+", NOME: "+inicio.nome+" foi atendido(a)!",
-							"MENSAGEM DO PROGRAMA", JOptionPane.CLOSED_OPTION);					
+				} else {
+					JOptionPane.showMessageDialog(null,
+							"CARTÃO:  " + inicio.cartao + ", NOME: " + inicio.nome + " foi atendido(a)!",
+							"MENSAGEM DO PROGRAMA", JOptionPane.CLOSED_OPTION);
 					inicio = inicio.prox;
 				}
 			}
 			if (op == 4) {
-				if (inicio == null ) {
+				if (inicio == null) {
 					atendimentoVazio();
-				}
-				else
-				{	
+				} else {
 					inicio = null;
-					JOptionPane.showMessageDialog(null, " * * O ATENDIMENTO FOI LIBERADO * *",
-							"MENSAGEM DO PROGRAMA", JOptionPane.CLOSED_OPTION);
+					JOptionPane.showMessageDialog(null, " * * O ATENDIMENTO FOI LIBERADO * *", "MENSAGEM DO PROGRAMA",
+							JOptionPane.CLOSED_OPTION);
 				}
 			}
 			if (op == 5) {
 				aux = inicio;
-				int n=0;
-				double soma=0;
-				while (aux != null) 
-				{					
+				int n = 0;
+				double soma = 0;
+				while (aux != null) {
 					soma = soma + aux.valor;
-					aux = aux.prox;					
+					aux = aux.prox;
 					n++;
 				}
-				JOptionPane.showMessageDialog(null, "O ATENDIMENTO CONTÉM: "+n+" ELEMENTOS.\nVALOR TOTAL: "+soma+"\n",
-						"MENSAGEM DO PROGRAMA", JOptionPane.CLOSED_OPTION);	
+				JOptionPane.showMessageDialog(null,
+						"O ATENDIMENTO CONTÉM: " + n + " ELEMENTOS.\nVALOR TOTAL: " + soma + "\n",
+						"MENSAGEM DO PROGRAMA", JOptionPane.CLOSED_OPTION);
 			}
 			if (op == 6) {
-				int cartao = Integer.parseInt(JOptionPane.showInputDialog("Informe o número do cartão","0"));
+				int cartao = Integer.parseInt(JOptionPane.showInputDialog("Informe o número do cartão", "0"));
 				aux = inicio;
 				int posicao = 1;
-				while (aux != null) 
-				{	
+				while (aux != null) {
 					if (cartao == aux.cartao) {
-						String texto = 	"CARTÃO: "+aux.cartao+"\n"+
-										"NOME: "+aux.nome+"\n"+
-										"SOBRENOME: "+aux.sobreNome+"\n"+
-										"VALOR: "+aux.valor+"\n"+
-										"POSIÇÃO: "+posicao+"a. POSIÇÃO";
-						JOptionPane.showMessageDialog(null, "DADOS DO CLIENTE: \n\n"+texto,"MENSAGEM DO PROGRAMA", JOptionPane.CLOSED_OPTION);
+						String texto = "CARTÃO: " + aux.cartao + "\n" + "NOME: " + aux.nome + "\n" + "SOBRENOME: "
+								+ aux.sobreNome + "\n" + "VALOR: " + aux.valor + "\n" + "POSIÇÃO: " + posicao
+								+ "a. POSIÇÃO";
+						JOptionPane.showMessageDialog(null, "DADOS DO CLIENTE: \n\n" + texto, "MENSAGEM DO PROGRAMA",
+								JOptionPane.CLOSED_OPTION);
 					}
 					posicao++;
-					aux = aux.prox;					
+					aux = aux.prox;
 				}
 
 			}
 			if (op == 7) {
-				String nome = JOptionPane.showInputDialog("Nome do cliente","");
-				aux = inicio;	
+				String nome = JOptionPane.showInputDialog("Nome do cliente", "");
+				aux = inicio;
 				int posicao = 1;
-				while (aux != null) 
-				{	
+				while (aux != null) {
 					if (aux.nome.equals(nome)) {
-						String texto = 	"CARTÃO: "+aux.cartao+"\n"+
-										"NOME: "+aux.nome+"\n"+
-										"SOBRENOME: "+aux.sobreNome+"\n"+
-										"VALOR: "+aux.valor+"\n"+
-										"POSIÇÃO: "+posicao+"a. POSIÇÃO";
-						JOptionPane.showMessageDialog(null, "DADOS DO CLIENTE: \n\n"+texto,"MENSAGEM DO PROGRAMA", JOptionPane.CLOSED_OPTION);
+						String texto = "CARTÃO: " + aux.cartao + "\n" + "NOME: " + aux.nome + "\n" + "SOBRENOME: "
+								+ aux.sobreNome + "\n" + "VALOR: " + aux.valor + "\n" + "POSIÇÃO: " + posicao
+								+ "a. POSIÇÃO";
+						JOptionPane.showMessageDialog(null, "DADOS DO CLIENTE: \n\n" + texto, "MENSAGEM DO PROGRAMA",
+								JOptionPane.CLOSED_OPTION);
 					}
 					posicao++;
-					aux = aux.prox;					
+					aux = aux.prox;
 				}
 
 			}
 			if (op == 8) {
 				if (inicio == null) {
 					atendimentoVazio();
-				}
-				else {				
-					aux = inicio;						
-						
-						try {
-							FileWriter arq = new FileWriter("c:\\Dados\\Atendimento.txt");		
-							PrintWriter gravar = new PrintWriter(arq);							
-							
-							while (aux != null) {
- 
-								gravar.printf("%d, %s, %s, %.2f %n",aux.cartao,aux.nome,aux.sobreNome,+aux.valor);
-								aux = aux.prox;		
-							}	
-							gravar.printf("%s %n","--------------------------");
-							gravar.printf("%s %n","copyright (c) by: Fulano de Tal, Sicrano de Tal");
-							arq.close();
+				} else {
+					aux = inicio;
+
+					try {
+						FileWriter arq = new FileWriter("c:\\Dados\\Atendimento.txt");
+						PrintWriter gravar = new PrintWriter(arq);
+
+						while (aux != null) {
+
+							gravar.printf("%d, %s, %s, %.2f %n", aux.cartao, aux.nome, aux.sobreNome, +aux.valor);
+							aux = aux.prox;
 						}
-						catch(IOException e) 
-						{
-								System.out.println("MENSAGEM / CLASS ArquivoTexto:\nErro ao tentar gravar no arquivo");
-						}					
-						
-					JOptionPane.showMessageDialog(null, "ARQUIVO GRAVADO COM SUCESSO", "MENSAGEM DO SISTEMA", JOptionPane.CLOSED_OPTION);
+						gravar.printf("%s %n", "--------------------------");
+						gravar.printf("%s %n", "copyright (c) by: Fulano de Tal, Sicrano de Tal");
+						arq.close();
+					} catch (IOException e) {
+						System.out.println("MENSAGEM / CLASS ArquivoTexto:\nErro ao tentar gravar no arquivo");
+					}
+
+					JOptionPane.showMessageDialog(null, "ARQUIVO GRAVADO COM SUCESSO", "MENSAGEM DO SISTEMA",
+							JOptionPane.CLOSED_OPTION);
 				}
 			}
 			if (op == 9) {
-				int resposta = JOptionPane.showConfirmDialog(null, "DESEJA VER ARQUIVO?","MENSAGEM",JOptionPane.YES_NO_OPTION);
-				if (resposta == JOptionPane.YES_OPTION)	{
+				int resposta = JOptionPane.showConfirmDialog(null, "DESEJA VER ARQUIVO?", "MENSAGEM",
+						JOptionPane.YES_NO_OPTION);
+				if (resposta == JOptionPane.YES_OPTION) {
 					try {
 						Process pro = Runtime.getRuntime().exec("cmd.exe /c  c://Dados//Atendimento.txt");
 						pro.waitFor();
-						}
-						catch(Exception e) {
-							System.out.println("Erro . . . ");
-						}					
-				    }
+					} catch (Exception e) {
+						System.out.println("Erro . . . ");
+					}
+				}
 			}
 			if (op == 10) {
-				double filtro = Double.parseDouble(JOptionPane.showInputDialog("FILTRAR ATENDIMENTOS PARA VALORES SUPERIORES A: ",""));
-				JTextArea saida = new JTextArea(6,45); // HEIGHT X WIDTH
-				JScrollPane scroll = new JScrollPane(saida); 
-				saida.append("CARTÃO\t"+"NOME\t"+"SOBRENOME\t"+"VALOR\n");
+				double filtro = Double.parseDouble(
+						JOptionPane.showInputDialog("FILTRAR ATENDIMENTOS PARA VALORES SUPERIORES A: ", ""));
+				JTextArea saida = new JTextArea(6, 45); // HEIGHT X WIDTH
+				JScrollPane scroll = new JScrollPane(saida);
+				saida.append("CARTÃO\t" + "NOME\t" + "SOBRENOME\t" + "VALOR\n");
 				saida.append("----------------------------------------------------------------------------\n");
-				aux = inicio;	
-				int posicao = 1;				
-				while (aux != null) 
-				{	
+				aux = inicio;
+				int posicao = 1;
+				while (aux != null) {
 					if (aux.valor > filtro) {
-						saida.append(aux.cartao+"\t"+aux.nome+"\t"+aux.sobreNome+"\t"+aux.valor+"\n");						
+						saida.append(aux.cartao + "\t" + aux.nome + "\t" + aux.sobreNome + "\t" + aux.valor + "\n");
 					}
 					posicao++;
-					aux = aux.prox;					
+					aux = aux.prox;
 				}
 				saida.append("\n");
-				JOptionPane.showMessageDialog(null, scroll, "ATENDIMENTOS COM VALORES SUPERIORES A: "+filtro, JOptionPane.CLOSED_OPTION);
+				JOptionPane.showMessageDialog(null, scroll, "ATENDIMENTOS COM VALORES SUPERIORES A: " + filtro,
+						JOptionPane.CLOSED_OPTION);
 			}
 			if (op == 11) {
+				if (inicio == null) {
+					atendimentoVazio();
+				} else {
+					JTextArea saida = new JTextArea(7, 45); // HEIGHT X WIDTH
+					JScrollPane scroll = new JScrollPane(saida);
+					saida.append("NOME\t" + "ENDEREÇO\tPROX\t\n");
+					saida.append("-------------------------------------------------------------\n");
+					aux = inicio;
+					while (aux != null) {
+						if (aux.prox != null)
+							saida.append(aux.nome + "\t" + aux.hashCode() + "\t" + aux.prox.hashCode() + "\n");
+						else
+							saida.append(aux.nome + "\t" + aux.hashCode() + "\tfim\n");
+
+						aux = aux.prox;
+					}
+					saida.append("\n");
+					JOptionPane.showMessageDialog(null, scroll, "CONSULTAR DADOS DO ATENDIMENTO",
+							JOptionPane.CLOSED_OPTION);
+				}
 
 			}
 			if (op == 12) {
-
+				JTextArea saida = new JTextArea(8, 30); // HEIGHT X WIDTH
+				saida.append("\n");
+				saida.append("PROGRAMA DE ATENDIMENTO AO CLIENTE\n");
+				saida.append("-------------------------------------------------------------\n");
+				saida.append("Copyright (c) Byta Bug Informática Ltda\n");
+				saida.append("Programadores: Asdrubal, Indalécio e Quelé\n");
+				saida.append("Versão 1.0\n");
+				saida.append("Data: Maio de 2017\n");
+				saida.append("\n");
+				JOptionPane.showMessageDialog(null, saida, "SOBRE O PROGRAMA", JOptionPane.CLOSED_OPTION);
 			}
 		} while (op != 13);
 		System.out.println("-------------------------------------------");
