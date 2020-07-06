@@ -229,7 +229,6 @@ public class Atendimento {
 				}
 				saida.append("\n");
 				JOptionPane.showMessageDialog(null, scroll, "ATENDIMENTOS COM VALORES SUPERIORES A: "+filtro, JOptionPane.CLOSED_OPTION);
-
 			}
 			if (op == 11) {
 
