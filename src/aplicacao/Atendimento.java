@@ -118,9 +118,35 @@ public class Atendimento {
 				}
 			}
 			if (op == 5) {
-
+				aux = inicio;
+				int n=0;
+				double soma=0;
+				while (aux != null) 
+				{					
+					soma = soma + aux.valor;
+					aux = aux.prox;					
+					n++;
+				}
+				JOptionPane.showMessageDialog(null, "O ATENDIMENTO CONTÉM: "+n+" ELEMENTOS.\nVALOR TOTAL: "+soma+"\n",
+						"MENSAGEM DO PROGRAMA", JOptionPane.CLOSED_OPTION);	
 			}
 			if (op == 6) {
+				int cartao = Integer.parseInt(JOptionPane.showInputDialog("Informe o número do cartão","0"));
+				aux = inicio;
+				int posicao = 1;
+				while (aux != null) 
+				{	
+					if (cartao == aux.cartao) {
+						String texto = 	"CARTÃO: "+aux.cartao+"\n"+
+										"NOME: "+aux.nome+"\n"+
+										"SOBRENOME: "+aux.sobreNome+"\n"+
+										"VALOR: "+aux.valor+"\n"+
+										"POSIÇÃO: "+posicao+"a. POSIÇÃO";
+						JOptionPane.showMessageDialog(null, "DADOS DO CLIENTE: \n\n"+texto,"MENSAGEM DO PROGRAMA", JOptionPane.CLOSED_OPTION);
+					}
+					posicao++;
+					aux = aux.prox;					
+				}
 
 			}
 			if (op == 7) {
