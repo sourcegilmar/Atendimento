@@ -200,7 +200,16 @@ public class Atendimento {
 				}
 			}
 			if (op == 9) {
-
+				int resposta = JOptionPane.showConfirmDialog(null, "DESEJA VER ARQUIVO?","MENSAGEM",JOptionPane.YES_NO_OPTION);
+				if (resposta == JOptionPane.YES_OPTION)	{
+					try {
+						Process pro = Runtime.getRuntime().exec("cmd.exe /c  c://Dados//Atendimento.txt");
+						pro.waitFor();
+						}
+						catch(Exception e) {
+							System.out.println("Erro . . . ");
+						}					
+				    }
 			}
 			if (op == 10) {
 
