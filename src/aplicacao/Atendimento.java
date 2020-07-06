@@ -1,5 +1,8 @@
 package aplicacao;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -169,7 +172,32 @@ public class Atendimento {
 
 			}
 			if (op == 8) {
-
+				if (inicio == null) {
+					atendimentoVazio();
+				}
+				else {				
+					aux = inicio;						
+						
+						try {
+							FileWriter arq = new FileWriter("c:\\Dados\\Atendimento.txt");		
+							PrintWriter gravar = new PrintWriter(arq);							
+							
+							while (aux != null) {
+ 
+								gravar.printf("%d, %s, %s, %.2f %n",aux.cartao,aux.nome,aux.sobreNome,+aux.valor);
+								aux = aux.prox;		
+							}	
+							gravar.printf("%s %n","--------------------------");
+							gravar.printf("%s %n","copyright (c) by: Fulano de Tal, Sicrano de Tal");
+							arq.close();
+						}
+						catch(IOException e) 
+						{
+								System.out.println("MENSAGEM / CLASS ArquivoTexto:\nErro ao tentar gravar no arquivo");
+						}					
+						
+					JOptionPane.showMessageDialog(null, "ARQUIVO GRAVADO COM SUCESSO", "MENSAGEM DO SISTEMA", JOptionPane.CLOSED_OPTION);
+				}
 			}
 			if (op == 9) {
 
