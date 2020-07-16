@@ -277,12 +277,20 @@ public class Atendimento {
 	}
 
 	private static int mostrarMenu() {
-		String texto = "\nMENU DE OPÇÕES\n" + "\n1  - Recepcionar cliente"
-				+ "\n2  - Consultar clientes a serem atendidos" + "\n3  - Atender cliente"
-				+ "\n4  - Liberar todos os clientes" + "\n5  - Verificar quantidade de clientes a atender"
-				+ "\n6  - Localizar cliente por número" + "\n7  - Localizar cliente por nome"
-				+ "\n8  - Emitir relatório de clientes" + "\n9  - Ver relatório de clientes"
-				+ "\n10 - Filtrar clientes por valor" + "\n11 - Ver endereços hash" + "\n12 - Sobre" + "\n13 - Sair\n";
+		String texto = "\nMENU DE OPÇÕES\n" + 
+				"\n1  - Recepcionar cliente"+ 
+				"\n2  - Consultar clientes a serem atendidos" + 
+				"\n3  - Atender cliente"+ 
+				"\n4  - Liberar todos os clientes" + 
+				"\n5  - Verificar quantidade de clientes a atender"	+ 
+				"\n6  - Localizar cliente por número" + 
+				"\n7  - Localizar cliente por nome"	+ 
+				"\n8  - Emitir relatório de clientes" + 
+				"\n9  - Ver relatório de clientes"+ 
+				"\n10 - Filtrar clientes por valor" + 
+				"\n11 - Ver endereços hash" + 
+				"\n12 - Sobre" + 
+				"\n13 - Sair\n";
 		int opcao = Integer.parseInt(JOptionPane.showInputDialog(texto, "1"));
 		return opcao;
 	}
