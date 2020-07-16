@@ -1,5 +1,6 @@
 package aplicacao;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -170,7 +171,13 @@ public class Atendimento {
 					atendimentoVazio();
 				} else {
 					aux = inicio;
-
+									
+					// Verifica se a pasta existe, se não existe, cria!
+					File file = new File("C:/DADOS");  
+					if (!file.exists()) {
+					    file.mkdirs();
+					}
+					
 					try {
 						FileWriter arq = new FileWriter("c:\\Dados\\Atendimento.txt");
 						PrintWriter gravar = new PrintWriter(arq);
