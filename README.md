@@ -1,7 +1,7 @@
 # Atendimento
-
-* * * DEPRECATED PROJECT * * *
-* * * 
+- - - - - - - - - - - - - - - - - - - - - - -
+DEPRECATED PROJECT SEE FILAATENDIMENTO PROJECT
+- - - - - - - - - - - - - - - - - - - - - - - 
 
 This is a complete project that shows how to implement a program using simply queue linked.
 This program does not use arrays structures, instead of, it uses memory (linked) chainings.
